@@ -37,7 +37,7 @@ useEffect(() => {
   const submitHandler = (e) => {
     e.preventDefault()
     async function add(){
-        const res = await axios.get(`http://www.omdbapi.com/?apikey=${apikey}&t=${name}`)
+        const res = await axios.get(`https://www.omdbapi.com/?apikey=${apikey}&t=${name}`)
         
         console.log(res)
         if(res.data.Response==="False"){
