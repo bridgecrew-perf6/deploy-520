@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react'
-import { Link,useParams } from 'react-router-dom'
+import { Link,useHistory,useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Button } from 'react-bootstrap'
@@ -12,9 +12,14 @@ const PlaylistScreen = () => {
 const {id} = useParams()
   const userLogin = useSelector((state) => state.userLogin)
   const { loading, error, userInfo } = userLogin
+  const history = useHistory()
 
 console.log(id)
   useEffect(() => {
+    if(!userInfo)
+    {
+      history.push('/login')
+    }
  async function getmovies(){
 const res = await axios.get(`/playlist/movies/${id}`)
 console.log(res)
